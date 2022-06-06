@@ -44,7 +44,7 @@ jobs:
           # Service Principal password
           service_principal_password: ${{ secrets.ACRPASSWORD }}
           # Azure Container Registry tenant
-          tenant: 
+          tenant: 0ef6ab0c-c18f-430c-ab5b-8eacfd69402c
           # The name of the ACR, minus the .azurecr.io
           registry: pardusacr
           # Repository to use

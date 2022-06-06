@@ -33,8 +33,8 @@ jobs:
           password: ${{ secrets.ACRPASSWORD }}
       - run: |
           cd app
-          docker build . -t pardusacr.azurecr.io/one-upon-an-app:latest
-          docker push pardusacr.azurecr.io/one-upon-an-app:latest
+          docker build . -t pardusacr.azurecr.io/once-upon-an-app:latest
+          docker push pardusacr.azurecr.io/once-upon-an-app:latest
 
       - name: Azure Login
         uses: Azure/login@v1

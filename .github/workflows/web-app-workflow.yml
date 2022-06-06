@@ -37,7 +37,7 @@ jobs:
           docker push pardusacr.azurecr.io/one-upon-an-app:${{ github.sha }}
 
       - name: Azure Login
-        uses: Azure/login@v1.4.4
+        uses: Azure/login@v1
         with:
           # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
           creds: ${{ secrets.AZURE_CREDENTIALS }}

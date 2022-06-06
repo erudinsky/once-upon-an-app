@@ -33,8 +33,8 @@ jobs:
           password: ${{ secrets.ACRPASSWORD }}
       - run: |
           cd app
-          docker build . -t pardusacr.azurecr.io/one-upon-an-app:${{ github.sha }}
-          docker push pardusacr.azurecr.io/one-upon-an-app:${{ github.sha }}
+          docker build . -t pardusacr.azurecr.io/one-upon-an-app:latest
+          docker push pardusacr.azurecr.io/one-upon-an-app:latest
 
       - name: Azure Login
         uses: Azure/login@v1
@@ -43,4 +43,3 @@ jobs:
 
       - run: |
           az webapp list --query "[?state=='Running']"
-          

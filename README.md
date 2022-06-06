@@ -40,3 +40,7 @@ az deployment group create -g myapp-rg -f main.bicep
 ```
 
 Dockerfile is provided. Build image, push to the regisry (the one being build with bicep). Run app on Web App.
+
+## Feature
+
+This is new feature.

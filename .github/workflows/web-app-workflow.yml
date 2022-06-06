@@ -28,38 +28,10 @@ jobs:
       - name: Azure Container Registry Login
         uses: Azure/docker-login@v1
         with:
-          # Container registry username
-          username: ${{ secrets.ACRUSER }}
-          # Container registry password
-          password: ${{ secrets.ACRPASSWORD }}
-          # Container registry server url
           login-server: pardusacr.azurecr.io
+          username: ${{ secrets.ACRUSER }}
+          password: ${{ secrets.ACRPASSWORD }}
+      - run: |
+        docker build . -t pardusacr.azurecr.io/one-upon-an-app:${{ env.GITHUB_JOB }}
+        docker push pardusacr.azurecr.io/one-upon-an-app:${{ env.GITHUB_JOB }}
 
-
-      - name: Azure Container Registry Build
-        uses: Azure/acr-build@v1
-        with:
-          # Service Principal with Contributor role on the ACR
-          service_principal: ${{ secrets.ACRUSER }}
-          # Service Principal password
-          service_principal_password: ${{ secrets.ACRPASSWORD }}
-          # Azure Container Registry tenant
-          tenant: 0ef6ab0c-c18f-430c-ab5b-8eacfd69402c
-          # The name of the ACR, minus the .azurecr.io
-          registry: pardusacr
-          # Repository to use
-          repository: once-upon-an-app
-          # Github access token for private repositories
-          git_access_token: 
-          # Docker image name
-          image: # optional
-          # Docker image tag, default to the commit SHA
-          tag: # optional
-          # Branch to build from, defaults to master
-          branch: # optional
-          # The folder in the Github repo that holds the source
-          folder: 
-          # The location of the Dockerfile; defaults to ./Dockerfile
-          dockerfile: # optional
-          # JSON specifying key=value pairs as as Docker build arguments
-          build_args: # optional

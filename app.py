@@ -3,6 +3,10 @@ import socket
 
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
+def root():
+  return 'Hello world!'
+
 @app.route('/ping', methods=['GET'])
 
 def ping():

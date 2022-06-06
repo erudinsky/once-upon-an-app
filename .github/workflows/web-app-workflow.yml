@@ -32,6 +32,7 @@ jobs:
           username: ${{ secrets.ACRUSER }}
           password: ${{ secrets.ACRPASSWORD }}
       - run: |
+          cd app
           docker build . -t pardusacr.azurecr.io/one-upon-an-app:${{ github.sha }}
           docker push pardusacr.azurecr.io/one-upon-an-app:${{ github.sha }}
 

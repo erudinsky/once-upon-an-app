@@ -42,4 +42,8 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - run: |
+          cd bicep
+          az deployment group what-if -g github -f main.bicep
+          az deployment group validate -g github -f main.bicep
+          az deployment group create -g github -f main.bicep
           az webapp list --query "[?state=='Running']"

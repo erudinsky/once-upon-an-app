@@ -41,35 +41,6 @@ jobs:
         with:
           # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-          # ClientId of the Azure Service principal created.
-          client-id: 
-          # TenantId of the Azure Service principal created.
-          tenant-id: # optional
-          # Azure subscriptionId
-          subscription-id: # optional
-          # Set this value to true to enable Azure PowerShell Login in addition to Az CLI login
-          enable-AzPSSession: # optional
-          # Name of the environment. Supported values are azurecloud, azurestack, azureusgovernment, azurechinacloud, azuregermancloud. Default being azurecloud
-          environment: # optional, default is azurecloud
-          # Set this value to true to enable support for accessing tenants without subscriptions
-          allow-no-subscriptions: # optional
-          # Provide audience field for access-token. Default value is api://AzureADTokenExchange
-          audience: # optional, default is api://AzureADTokenExchange
 
-      - name: Azure WebApp
-        uses: Azure/webapps-deploy@v2
-        with:
-          # Name of the Azure Web App
-          app-name: parduswebapp
-          # Applies to Web Apps(Windows and Linux) and Web App Containers(linux). Multi container scenario not supported. Publish profile (*.publishsettings) file contents with Web Deploy secrets
-          publish-profile: # optional
-          # Enter an existing Slot other than the Production slot
-          slot-name: # optional, default is production
-          # Applies to Web App only: Path to package or folder. *.zip, *.war, *.jar or a folder to deploy
-          package: # optional, default is .
-          # Applies to Web App Containers only: Specify the fully qualified container image(s) name. For example, 'myregistry.azurecr.io/nginx:latest' or 'python:3.7.2-alpine/'. For multi-container scenario multiple container image names can be provided (multi-line separated)
-          images: pardusacr.azurecr.io/one-upon-an-app:4772cfe41f8aa7ba9bcd4d84dbd0c682d412ab4e
-          # Applies to Web App Containers only: Path of the Docker-Compose file. Should be a fully qualified path or relative to the default working directory. Required for multi-container scenario
-          configuration-file: # optional
-          # Enter the start up command. For ex. dotnet run or dotnet run
-          startup-command: # optional
+      - run: |
+          az webapp list --query "[?state=='Running']"

@@ -14,3 +14,6 @@ def ping():
 
 if __name__ == "__main__":
   app.run(debug=True, host='0.0.0.0')
+  
+def codesmell():
+  return 1<>1

@@ -12,6 +12,5 @@ docker build -t $ACR/$APP --platform linux/amd64 ../nginx/.
 docker scan $ACR/$APP
 docker push $ACR/$APP
 
-
 echo ""
 echo "Enjoy the app!"

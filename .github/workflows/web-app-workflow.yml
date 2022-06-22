@@ -46,4 +46,3 @@ jobs:
           cd nginx
           docker build . -t cochleaacr.azurecr.io/once-upon-an-app:latest
           docker push cochleaacr.azurecr.io/once-upon-an-app:latest
-

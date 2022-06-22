@@ -36,13 +36,8 @@ jobs:
           az group create -g $RESOURCE_GROUP -l westeurope
           az deployment group create --name Deployment -f main.bicep -g $RESOURCE_GROUP
 
-      - name: Azure Container Registry Login
-        uses: Azure/docker-login@v1
-        with:
-          login-server: cochleaacr.azurecr.io
-          username: ${{ secrets.ACRUSER }}
-          password: ${{ secrets.ACRPASSWORD }}
       - run: |
+          az acr login -n cochleaacr.azurecr.io
           cd nginx
           docker build . -t cochleaacr.azurecr.io/once-upon-an-app:latest
           docker push cochleaacr.azurecr.io/once-upon-an-app:latest

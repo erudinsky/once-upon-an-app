@@ -32,18 +32,18 @@ jobs:
 
       - run: |
           cd bicep
-          az deployment group what-if -g github -f main.bicep
-          az deployment group validate -g github -f main.bicep
-          az deployment group create -g github -f main.bicep
+          export RESOURCE_GROUP=cochlea-rg
+          az group create -g $RESOURCE_GROUP -l westeurope
+          az deployment group create --name Deployment -f main.bicep -g $RESOURCE_GROUP
 
       - name: Azure Container Registry Login
         uses: Azure/docker-login@v1
         with:
-          login-server: pardusacr.azurecr.io
+          login-server: cochleaacr.azurecr.io
           username: ${{ secrets.ACRUSER }}
           password: ${{ secrets.ACRPASSWORD }}
       - run: |
-          cd app
-          docker build . -t pardusacr.azurecr.io/once-upon-an-app:latest
-          docker push pardusacr.azurecr.io/once-upon-an-app:latest
+          cd nginx
+          docker build . -t cochleaacr.azurecr.io/once-upon-an-app:latest
+          docker push cochleaacr.azurecr.io/once-upon-an-app:latest
 

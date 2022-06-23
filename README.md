@@ -30,7 +30,7 @@ Folder's structure:
 
 cd scripts
 chmod +x provisioner.sh
-./provisioner
+./provisioner.sh
 
 ```
 
@@ -46,7 +46,7 @@ az deployment group create --name Deployment -f ../bicep/main.bicep -g $RESOURCE
 
 ```
 
-The bicep template provisions the following infra: 
+The bicep template provisions the following infra (without CDN, functions and DBs 🤠)
 
 ![WebApp behind Front Door](multi-region-web-app-diagram.png)
 
@@ -79,3 +79,14 @@ curl localhost
 </html>            
 
 ```
+
+## Bicep 
+
+```bash 
+
+.
+├── bicep
+    └── main.bicep
+```
+
+![Visualize template](schema.png)
